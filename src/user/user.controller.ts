@@ -1,6 +1,7 @@
 import { Controller , Get , Post , Patch ,  Delete , Param  , Req , Body , HttpCode }  from "@nestjs/common/decorators";
 import {HttpStatus} from "@nestjs/common/"
 import { Request } from "express";
+import { CreateUserDto } from "./DTOs/createUser.dto";
 
 @Controller('/user')
 export class UserController {
@@ -17,9 +18,9 @@ FindOne( @Param("username") username : string) : string {
     return username
 }
 @Post()
-Create() : string
+Create(@Body() userdata : CreateUserDto) 
 {
-    return "create User"
+    return userdata
 }
 @Patch('/:username')
 Update(@Param("username") username : string) : string
